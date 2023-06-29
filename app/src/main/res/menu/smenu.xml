@@ -12,8 +12,4 @@
         android:title="ZZim">
     </item>
 
-    <item
-        android:id="@+id/tab4"
-        android:title="Mpage">
-    </item>
 </menu>
