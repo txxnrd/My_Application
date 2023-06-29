@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/tab3"
-        android:title="ZZim">
+        android:title="New">
     </item>
 
 </menu>
