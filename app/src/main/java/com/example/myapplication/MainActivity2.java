@@ -21,8 +21,9 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import android.content.Intent;
 
-public class MainActivity2 extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity implements MyRecyclerAdapter.ItemClickListener {
 
     private RecyclerView mRecyclerView;
     private MyRecyclerAdapter mRecyclerAdapter;
@@ -37,10 +38,10 @@ public class MainActivity2 extends AppCompatActivity {
 
         /* initiate adapter */
         mRecyclerAdapter = new MyRecyclerAdapter();
+        mRecyclerAdapter.setClickListener(this); // MainActivity2 is now listening to click events.
 
         /* initiate recyclerview */
         mRecyclerView.setAdapter(mRecyclerAdapter);
-        //mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         /* adapt data */
@@ -54,6 +55,12 @@ public class MainActivity2 extends AppCompatActivity {
 
         mRecyclerAdapter.setFriendList(mfriendItems);
         Log.d("MainActivity2", "Size of mfriendItems: " + mfriendItems.size());
+    }
 
+    @Override
+    public void onItemClick(View view, int position) {
+        // Define what happens when an item is clicked. Here we start NewActivity.
+        Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+        startActivity(intent);
     }
 }
