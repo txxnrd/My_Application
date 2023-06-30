@@ -2,14 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/tab1"
+        android:enabled="true"
         android:title="Home" />
     <item
         android:id="@+id/tab2"
+        android:enabled="true"
         android:title="Search"/>
 
     <item
         android:id="@+id/tab3"
-        android:title="New">
-    </item>
+        android:enabled="true"
+        android:title="New"/>
 
 </menu>
