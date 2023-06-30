@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,18 +40,20 @@ public class MainActivity2 extends AppCompatActivity {
 
         /* initiate recyclerview */
         mRecyclerView.setAdapter(mRecyclerAdapter);
+        //mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL,false));
 
         /* adapt data */
         mfriendItems = new ArrayList<>();
-        for(int i=1;i<=10;i++){
+        for(int i=1; i<=10; i++){
             if(i%2==0)
-                mfriendItems.add(new FriendItem(R.drawable.ic_phone,i+"번째 사람",i+"번째 상태메시지"));
+                mfriendItems.add(new FriendItem(R.drawable.ic_man, i+"번째 사람", i+"번째 상태메시지"));
             else
-                mfriendItems.add(new FriendItem(R.drawable.ic_phone,i+"번째 사람",i+"번째 상태메시지"));
-
+                mfriendItems.add(new FriendItem(R.drawable.ic_woman, i+"번째 사람", i+"번째 상태메시지"));
         }
+
         mRecyclerAdapter.setFriendList(mfriendItems);
+        Log.d("MainActivity2", "Size of mfriendItems: " + mfriendItems.size());
+
     }
 }
