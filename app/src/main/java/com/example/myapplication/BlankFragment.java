@@ -48,7 +48,7 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
         } catch (IOException e) {
             Log.e("BlankFragment", "Error loading JSON", e);
         }
-//우우
+//왜 푸시가 안되지
         mRecyclerAdapter.setFriendList(mfriendItems);
 
         return view;
