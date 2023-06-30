@@ -1,27 +1,22 @@
 package com.example.myapplication;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
-import android.location.Address;
-import android.location.Geocoder;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import android.content.Intent;
 
 public class MainActivity2 extends AppCompatActivity implements MyRecyclerAdapter.ItemClickListener {
 
@@ -44,17 +39,21 @@ public class MainActivity2 extends AppCompatActivity implements MyRecyclerAdapte
         mRecyclerView.setAdapter(mRecyclerAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        /* adapt data */
-        mfriendItems = new ArrayList<>();
-        for(int i=1; i<=10; i++){
-            if(i%2==0)
-                mfriendItems.add(new FriendItem(R.drawable.ic_man, i+"번째 사람", i+"번째 상태메시지"));
-            else
-                mfriendItems.add(new FriendItem(R.drawable.ic_woman, i+"번째 사람", i+"번째 상태메시지"));
+        /* load JSON from assets */
+        try {
+            InputStream inputStream = getAssets().open("data.json");
+            InputStreamReader reader = new InputStreamReader(inputStream);
+            Gson gson = new Gson();
+
+            // This will convert the JSON array into a list of FriendItems
+            mfriendItems = gson.fromJson(reader, new TypeToken<List<FriendItem>>() {}.getType());
+
+        } catch (IOException e) {
+            Log.e("MainActivity2", "Error loading JSON", e);
         }
 
+        /* adapt data */
         mRecyclerAdapter.setFriendList(mfriendItems);
-        Log.d("MainActivity2", "Size of mfriendItems: " + mfriendItems.size());
     }
 
     @Override
