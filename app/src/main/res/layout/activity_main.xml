@@ -10,17 +10,22 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:text="Hello World!!!!!" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/Smenu"
+    <Switch
+        android:id="@+id/switch1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:backgroundTint="#DFF4C7"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/smenu" />
+        android:text="Switch" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:text="Button" />
+
     <Button
         android:id="@+id/moveButton"
         android:layout_width="match_parent"
@@ -31,6 +36,28 @@
         android:onClick="moveButton"
         app:labelVisibilityMode="labeled" />
 
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CheckBox" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CheckBox" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/Smenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:backgroundTint="#DFF4C7"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/smenu" >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 </LinearLayout>

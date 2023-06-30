@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         moveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent);
             }
         });
