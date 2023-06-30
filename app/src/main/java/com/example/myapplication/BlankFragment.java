@@ -73,6 +73,12 @@ public class BlankFragment extends Fragment {
 
         return view;
     }
+    @Override
+    public void onItemClick(View view, int position) {
+        // Define what happens when an item is clicked. Here we start NewActivity.
+        Intent intent = new Intent(BlankFragment.this, MainActivity3.class);
+        startActivity(intent);
+    }
 
     /*
     @Override
