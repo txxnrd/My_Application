@@ -19,15 +19,7 @@ public class MainActivity3 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-                //new!!
-                /*
-                BlankFragment blankFragment = new BlankFragment();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container1, blankFragment)
-                        .addToBackStack(null)
-                        .commit();
 
-                 */
             }
         });
     }
