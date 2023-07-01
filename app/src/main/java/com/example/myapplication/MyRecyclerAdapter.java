@@ -60,6 +60,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
             profile.setImageResource(item.getResourceId());
             name.setText(item.getName());
             // !@!@!@ 사진 옆에 표시할 내용 추가
+            // 힘내라 힘
             message.setText(item.getNumber());
         }
 
