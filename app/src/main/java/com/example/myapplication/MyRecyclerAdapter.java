@@ -22,25 +22,20 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull MyRecyclerAdapter.ViewHolder holder, int position) {
         holder.onBind(mFriendList.get(position));
     }
-
     public void setFriendList(ArrayList<FriendItem> list) {
         this.mFriendList = list;
         notifyDataSetChanged();
     }
-
     public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
-
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
-
     @Override
     public int getItemCount() {
         return mFriendList.size();
@@ -65,7 +60,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
             profile.setImageResource(item.getResourceId());
             name.setText(item.getName());
             // !@!@!@ 사진 옆에 표시할 내용 추가
-            message.setText("내용 추가");
+            message.setText(item.getNumber());
         }
 
         @Override

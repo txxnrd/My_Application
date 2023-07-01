@@ -50,7 +50,6 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
         }
 //왜 푸시가 안되지
         mRecyclerAdapter.setFriendList(mfriendItems);
-
         return view;
     }
 
