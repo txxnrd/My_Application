@@ -13,5 +13,22 @@ public class MainActivity3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+        Button moveButton = findViewById(R.id.button);
+        moveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                //new!!
+                /*
+                BlankFragment blankFragment = new BlankFragment();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container1, blankFragment)
+                        .addToBackStack(null)
+                        .commit();
+
+                 */
+            }
+        });
     }
 }
