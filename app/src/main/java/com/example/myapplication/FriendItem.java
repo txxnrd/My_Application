@@ -3,17 +3,17 @@ package com.example.myapplication;
 public class FriendItem {
     private String name;
     private String number;
-    private int resourceId;
+    private String imageUrl;
 
     // Default constructor for Gson
     public FriendItem() {
     }
 
     // Additional constructor for manual initialization
-    public FriendItem(int resourceId, String name, String number) {
+    public FriendItem(String imageUrl, String name, String number) {
         this.name = name;
         this.number = number;
-        this.resourceId = resourceId;
+        this.imageUrl = imageUrl;
     }
 
     // Getter methods
@@ -25,8 +25,8 @@ public class FriendItem {
         return number;
     }
 
-    public int getResourceId() {
-        return resourceId;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     // Setter methods
@@ -38,7 +38,7 @@ public class FriendItem {
         this.number = number;
     }
 
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
