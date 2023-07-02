@@ -45,6 +45,8 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
             Gson gson = new Gson();
 
             mfriendItems = gson.fromJson(reader, new TypeToken<List<FriendItem>>() {}.getType());
+
+
         } catch (IOException e) {
             Log.e("BlankFragment", "Error loading JSON", e);
         }
@@ -55,7 +57,10 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
 
     @Override
     public void onItemClick(View view, int position) {
-        Intent intent = new Intent(getActivity(), MainActivity3.class);
+        Gson gson = new Gson();
+        String json = gson.toJson(mfriendItems);
+        Intent intent = new Intent(getActivity(), DetailActivity.class);
+        intent.putExtra("data",json);
         startActivity(intent);
     }
 }
