@@ -4,16 +4,18 @@ public class FriendItem {
     private String name;
     private String number;
     private String imageUrl;
+    private String description;
 
     // Default constructor for Gson
     public FriendItem() {
     }
 
     // Additional constructor for manual initialization
-    public FriendItem(String imageUrl, String name, String number) {
+    public FriendItem(String imageUrl, String name, String number, String description) {
         this.name = name;
         this.number = number;
         this.imageUrl = imageUrl;
+        this.description = description;
     }
 
     // Getter methods
@@ -28,6 +30,8 @@ public class FriendItem {
     public String getImageUrl() {
         return imageUrl;
     }
+
+    public String getDescription() {return description;}
 
     // Setter methods
     public void setName(String name) {

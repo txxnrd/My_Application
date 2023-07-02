@@ -20,6 +20,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemClickListener {
     private RecyclerView mRecyclerView;
@@ -57,10 +59,11 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
 
     @Override
     public void onItemClick(View view, int position) {
-        Gson gson = new Gson();
-        String json = gson.toJson(mfriendItems);
-        Intent intent = new Intent(getActivity(), DetailActivity.class);
-        intent.putExtra("data",json);
-        startActivity(intent);
+        FriendItem item = mfriendItems.get(position);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(item.getName());
+        builder.setMessage(item.getDescription());
+        builder.setPositiveButton("X", null);
+        builder.show();
     }
 }
