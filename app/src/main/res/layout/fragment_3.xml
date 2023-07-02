@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".BlankFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--TODO: Update blank fragment layout-->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="나는 천재 개발자야!!" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="430dp"
+            android:layout_height="471dp"
+            ></ImageView>
+
+        <Chronometer
+            android:id="@+id/chronometer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="469dp"
+            android:gravity="center_horizontal"
+            android:textSize="100dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp">
+
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Start"
+                android:background="@drawable/round_button"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+
+            <Button
+                android:id="@+id/stopButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Stop"
+                android:background="@drawable/round_button"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/resetButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Reset"
+                android:background="@drawable/round_button"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginLeft="25dp"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
