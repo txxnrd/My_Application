@@ -6,7 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.content.Intent;
-
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,8 +21,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import android.app.AlertDialog;
+import android.app.Dialog;
+import com.bumptech.glide.Glide;
 import android.content.DialogInterface;
+import android.view.Window;
+
+
 
 public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemClickListener {
     private RecyclerView mRecyclerView;
@@ -60,10 +65,29 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
     @Override
     public void onItemClick(View view, int position) {
         FriendItem item = mfriendItems.get(position);
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        /*
         builder.setTitle(item.getName());
         builder.setMessage(item.getDescription());
-        builder.setPositiveButton("X", null);
-        builder.show();
+
+
+         */
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.activity_main3, null);
+
+        TextView nameTextView = dialogView.findViewById(R.id.nameTextView);
+        TextView phonenumber = dialogView.findViewById(R.id.phonenumber);
+        TextView descriptionTextView = dialogView.findViewById(R.id.descriptionTextView);
+        ImageView imageView = dialogView.findViewById(R.id.imageView);
+
+        nameTextView.setText(item.getName());
+        phonenumber.setText(item.getNumber());
+        descriptionTextView.setText(item.getDescription());
+        Glide.with(imageView.getContext())
+                .load(item.getImageUrl())
+                .into(imageView);
+        Dialog dialog = new Dialog(getContext(), android.R.style.Theme_Light_NoTitleBar_Fullscreen);
+        dialog.setContentView(dialogView);
+        dialog.show();
     }
 }
