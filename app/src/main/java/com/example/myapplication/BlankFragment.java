@@ -93,7 +93,7 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
         dialog.show();
         dialogView.setOnTouchListener(new View.OnTouchListener() {
             float downY = 0;
-            final int CLOSE_THRESHOLD = 50;
+            final int CLOSE_THRESHOLD = 50;  // Threshold in pixels to close the dialog
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
