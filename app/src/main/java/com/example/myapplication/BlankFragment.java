@@ -25,6 +25,7 @@ import android.app.Dialog;
 import com.bumptech.glide.Glide;
 import android.content.DialogInterface;
 import android.view.Window;
+import android.view.MotionEvent;
 
 
 
@@ -66,12 +67,6 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
     public void onItemClick(View view, int position) {
         FriendItem item = mfriendItems.get(position);
 
-        /*
-        builder.setTitle(item.getName());
-        builder.setMessage(item.getDescription());
-
-
-         */
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.activity_main3, null);
 
@@ -96,5 +91,25 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
         });
         dialog.setContentView(dialogView);
         dialog.show();
+        dialogView.setOnTouchListener(new View.OnTouchListener() {
+            float downY = 0;
+            final int CLOSE_THRESHOLD = 50;  // Threshold in pixels to close the dialog
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        downY = event.getY();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        if (downY - event.getY() > CLOSE_THRESHOLD) {
+                            dialog.dismiss();
+                        }
+                        return true;
+                }
+                return false;
+            }
+        });
+
     }
 }
