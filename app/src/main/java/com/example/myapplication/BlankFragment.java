@@ -79,6 +79,7 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
         TextView phonenumber = dialogView.findViewById(R.id.phonenumber);
         TextView descriptionTextView = dialogView.findViewById(R.id.descriptionTextView);
         ImageView imageView = dialogView.findViewById(R.id.imageView);
+        ImageView closeButton = dialogView.findViewById(R.id.button);
 
         nameTextView.setText(item.getName());
         phonenumber.setText(item.getNumber());
@@ -87,6 +88,12 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
                 .load(item.getImageUrl())
                 .into(imageView);
         Dialog dialog = new Dialog(getContext(), android.R.style.Theme_Light_NoTitleBar_Fullscreen);
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();  // 이 코드가 Dialog를 닫는 코드입니다
+            }
+        });
         dialog.setContentView(dialogView);
         dialog.show();
     }
