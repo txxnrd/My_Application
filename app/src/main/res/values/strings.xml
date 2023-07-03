@@ -2,4 +2,6 @@
     <string name="app_name">Be Mad</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="date_and_week">"%1$s Week: %2$d"</string>
+
 </resources>
