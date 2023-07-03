@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class dialog extends AppCompatActivity {
+public class Dialog extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

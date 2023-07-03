@@ -15,6 +15,9 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 
 import org.w3c.dom.Text;
 
@@ -82,6 +85,35 @@ public class BlankFragment2 extends Fragment {
                 image_num.setText(gridItem.getNum());
                 image_name.setText(gridItem.getName());
                 image_icon.setImageResource(gridItem.getIcon());
+                // Set an onClickListener for the ImageView
+                image_icon.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Create a Dialog to show detail
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        View dialogView = inflater.inflate(R.layout.grid_dialog, null);
+                        ImageView dialogImage = dialogView.findViewById(R.id.dialog_image);
+                        TextView dialogText = dialogView.findViewById(R.id.dialog_text);
+                        ImageView closeButton = dialogView.findViewById(R.id.close_button);  // close_button을 찾습니다
+                        dialogImage.setImageResource(gridItem.getIcon());
+                        dialogText.setText(gridItem.getName());
+                        builder.setView(dialogView)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // User clicked OK button
+                                    }
+                                });
+                        AlertDialog dialog = builder.create();
+                        closeButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialog.dismiss();  // 이 코드가 Dialog를 닫는 코드입니다
+                            }
+                        });
+                        dialog.setCanceledOnTouchOutside(true);  // 바깥쪽을 터치하면 Dialog가 닫히게 설정
+                        dialog.show();
+                    }
+                });
                 Log.d(TAG, "getView() - [ "+position+" ]"+gridItem.getName());
             }
             return convertView;
