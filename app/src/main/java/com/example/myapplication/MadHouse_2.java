@@ -48,7 +48,7 @@ public class MadHouse_2 extends AppCompatActivity {
         String formattedTime = String.format(Locale.getDefault(), "%02d:%02d:%02d", hour, minute, second);
         textView.setText(formattedTime);
 
-        TextView textView_1 = findViewById(R.id.dateTextView); // Replace with your actual TextView ID
+        TextView textView_1 = findViewById(R.id.dateTextView); // Replace with your actual TextView IDs
         textView_1.setText(String.valueOf(week)+"아하하하ㅏ핳");
     }
 }

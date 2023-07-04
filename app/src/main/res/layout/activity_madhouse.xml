@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="600dp"
             android:textSize="40dp"
-            android:text="i am a good boy"
+            android:text="i am a good boyd"
             android:gravity="center"
             ></TextView>
 
