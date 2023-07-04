@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -12,12 +13,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     BlankFragment blankfragment;
     BlankFragment2 blankfragment2;
     BlankFragment3 blankfragment3;
+    private static final int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,5 +55,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+/*
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            FriendItem newPerson = (FriendItem) data.getParcelableExtra("newperson");
+            Bundle args = new Bundle();
+            args.putParcelable("newPerson", newPerson);
+            blankfragment.setArguments(args);
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.containers, blankfragment).commit();
+
+        }
+
+ */
     }
 }

@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
+import java.util.Calendar;
+
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -26,9 +29,18 @@ public class MadHouse_2 extends AppCompatActivity {
         long minute = (lastElapsedTime / 60) % 60;
         long hour = lastElapsedTime / 3600;
 
-        // Load the week from SharedPreferences
-        SharedPreferences sharedPreferences_1 = getSharedPreferences("myWeek", Context.MODE_PRIVATE);
-        long week = sharedPreferences_1.getLong("week", 1);
+
+       // Get the current date
+        Calendar currentCalendar = Calendar.getInstance();
+
+        // Get the start date (2023-06-29)
+        Calendar startCalendar = Calendar.getInstance();
+        startCalendar.set(2023, 5, 29); // Month is 0-based, so 5 is June
+
+        // Calculate the week
+        int week = ((int) ((currentCalendar.getTime().getTime() / (1000*60*60*24)) -
+                (int) (startCalendar.getTime().getTime() / (1000*60*60*24))) / 7) + 1;
+
 
         // Display the last elapsed time
         TextView textView = findViewById(R.id.time_history);
