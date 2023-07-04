@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.databinding.Fragment3Binding;
 
-import java.util.Calendar;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -49,16 +48,9 @@ public class MadHouse extends AppCompatActivity {
         textView.setText(formattedTime);
 
 
-        // Get the current date
-        Calendar currentCalendar = Calendar.getInstance();
-
-        // Get the start date (2023-06-29)
-        Calendar startCalendar = Calendar.getInstance();
-        startCalendar.set(2023, 5, 29); // Month is 0-based, so 5 is June
-
-        // Calculate the week
-        int week = ((int) ((currentCalendar.getTime().getTime() / (1000*60*60*24)) -
-                (int) (startCalendar.getTime().getTime() / (1000*60*60*24))) / 7) + 1;
+        // Load the week from SharedPreferences
+        SharedPreferences sharedPreferences_1 = getSharedPreferences("myWeek", Context.MODE_PRIVATE);
+        long week = sharedPreferences_1.getLong("week", 1);
 
 
 
