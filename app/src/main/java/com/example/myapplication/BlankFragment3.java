@@ -74,7 +74,7 @@ public class BlankFragment3 extends Fragment {
             startTime = SystemClock.elapsedRealtime();
             wasTuesday = true;
         } else if (dayOfWeek != Calendar.TUESDAY) {
-            // It's not Tuesday, update the state
+            // It's not Tuesday, update the stated
             wasTuesday = false;
         }
 

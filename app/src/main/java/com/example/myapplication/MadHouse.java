@@ -44,7 +44,7 @@ public class MadHouse extends AppCompatActivity {
 
 // Now the time should be positive
         String formattedTime = String.format(Locale.getDefault(), "%02d:%02d:%02d", hours, minutes, seconds);
-        TextView textView = findViewById(R.id.time_history); // Replace "your_textview_id" with your actual TextView ID
+        TextView textView = findViewById(R.id.time_history); // Replace "your_textview_id" with your actual TextView IDd
         textView.setText(formattedTime);
 
 
