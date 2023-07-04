@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -56,7 +57,24 @@ public class MadHouse extends AppCompatActivity {
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(elapsedTime)));
 
         textView_1.setText(formattedTime);
+        ImageView imageView = findViewById(R.id.imageView); // Replace with your actual ImageView ID
+        if (elapsedTime <= 2000) {
+            imageView.setImageResource(R.drawable.character_start); // Replace with your actual image resources
+        } else if (elapsedTime <= 4000) {
+            imageView.setImageResource(R.drawable.character_1);
+        } else {
+            imageView.setImageResource(R.drawable.character);
+        }
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong("elapsedTime", 0);
+        editor.apply();
+    }
+
 }
 
 

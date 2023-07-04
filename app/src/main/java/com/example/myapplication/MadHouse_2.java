@@ -50,6 +50,8 @@ public class MadHouse_2 extends AppCompatActivity {
 
         TextView textView_1 = findViewById(R.id.dateTextView); // Replace with your actual TextView IDs
         textView_1.setText(String.valueOf(week)+"아하하하ㅏ핳");
+
+
     }
 }
 
