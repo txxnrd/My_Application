@@ -22,21 +22,30 @@ import java.util.Date;
 import java.util.Locale;
 
 public class BlankFragment3 extends Fragment {
+
+    private Fragment3Binding binding; // 추가
+
+
+
+
     boolean changed_1=false,changed_2=false;
 
     private long startTime = 0L;
     private long elapsedTime = 0L;
 
     private long lastWeek;
-    long time_passed;
+
+    long pauseOffset=0;
+
+
     private Handler timerHandler = new Handler();
     private Runnable updateTimerThread;
     private boolean wasTuesday;
 
     int week;
 
-    private static final long TIME_THRESHOLD = 5 * 1000; // 2초(밀리초 단위)
-    private static final long TIME_THRESHOLD_2 = 10 * 1000; // 4초(밀리초 단위)
+    private static final long TIME_THRESHOLD = 2 * 1000; // 2초(밀리초 단위)
+    private static final long TIME_THRESHOLD_2 = 4 * 1000; // 4초(밀리초 단위)
     private static final int DEFAULT_IMAGE = R.drawable.character_start;
     private static final int NEW_IMAGE = R.drawable.character_1;
     private static final int NEW_IMAGE_2 = R.drawable.character;
@@ -47,10 +56,10 @@ public class BlankFragment3 extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
 
-        Fragment3Binding binding = Fragment3Binding.inflate(inflater, container, false);
+        binding = Fragment3Binding.inflate(inflater, container, false);
 
-        SharedPreferences sharedPreferences_1 = getActivity().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-        wasTuesday = sharedPreferences_1.getBoolean("wasTuesday", false);
+
+
 
         // Find the TextView
         TextView dateTextView = binding.dateTextView;
@@ -65,32 +74,8 @@ public class BlankFragment3 extends Fragment {
         // Calculate the week
         week = ((int) ((currentCalendar.getTime().getTime() / (1000*60*60*24)) -
                 (int) (startCalendar.getTime().getTime() / (1000*60*60*24))) / 7) + 1;
-// Get the current day of the week
-        int dayOfWeek = currentCalendar.get(Calendar.DAY_OF_WEEK);
-        // Check if it's Thursday and it wasn't Thursday the last time we checked
-        if (dayOfWeek == Calendar.TUESDAY && !wasTuesday) {
-            // It's Thursday and it wasn't Thursday the last time, reset the timer and save the new state
-            elapsedTime = 0;
-            startTime = SystemClock.elapsedRealtime();
-            wasTuesday = true;
-        } else if (dayOfWeek != Calendar.TUESDAY) {
-            // It's not Tuesday, update the stated
-            wasTuesday = false;
-        }
-
-        // Save the state in SharedPreferences
-        SharedPreferences.Editor editor = sharedPreferences_1.edit();
-        editor.putBoolean("wasTuesday", wasTuesday);
-        editor.apply();
 
 
-
-        //... existing code ...
-
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("myWeek", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor_1 = sharedPreferences.edit();
-        editor_1.putLong("week", week);
-        editor_1.apply();
 
         // Format the date
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
@@ -103,63 +88,51 @@ public class BlankFragment3 extends Fragment {
         binding.imageView.setImageResource(DEFAULT_IMAGE);
 
         // Start button
+        // Start button
         binding.startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                time_passed=SystemClock.elapsedRealtime() + elapsedTime;
-                binding.chronometer.setBase(time_passed);
-                binding.chronometer.start();
-                binding.startButton.setEnabled(false);
-                binding.stopButton.setEnabled(true);
-                startTime = SystemClock.elapsedRealtime();
+                if (binding.startButton.getText().toString().equalsIgnoreCase("start")) {
+                    startTime = SystemClock.elapsedRealtime();
+                    binding.startButton.setText("Stop"); // Change button text to "Stop"
+                    binding.chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
+                    binding.chronometer.start();
 
-                //데이터 공유하기
-
-
-                // Timer Thread
-                updateTimerThread = new Runnable() {
-                    public void run() {
-                        elapsedTime = SystemClock.elapsedRealtime() - startTime;
-                        if (elapsedTime >= TIME_THRESHOLD_2 && changed_1 == false) {
-                            binding.imageView.setImageResource(NEW_IMAGE_2);
-                            changed_1=true;
-                        } else if (elapsedTime >= TIME_THRESHOLD && changed_2 == false) {
-                            binding.imageView.setImageResource(NEW_IMAGE);
-                            changed_2=true;
+                    // Timer Thread
+                    updateTimerThread = new Runnable() {
+                        public void run() {
+                            elapsedTime = SystemClock.elapsedRealtime() - startTime;
+                            if (elapsedTime >= TIME_THRESHOLD_2 && !changed_1) {
+                                binding.imageView.setImageResource(NEW_IMAGE_2);
+                                changed_1=true;
+                            } else if (elapsedTime >= TIME_THRESHOLD && !changed_2 ) {
+                                binding.imageView.setImageResource(NEW_IMAGE);
+                                changed_2=true;
+                            }
+                            timerHandler.postDelayed(this, 1000); // Check every second
                         }
-                        timerHandler.postDelayed(this, 1000); // Check every second
-                    }
-                };
-                timerHandler.postDelayed(updateTimerThread, 1000); // Delay
+                    };
+                    timerHandler.postDelayed(updateTimerThread, 1000); // Delay
+                } else {
+                    pauseOffset = SystemClock.elapsedRealtime() - binding.chronometer.getBase();
+
+                    // Stop the chronometer
+                    binding.chronometer.stop();
+
+                    // Stop the timer
+                    timerHandler.removeCallbacks(updateTimerThread);
+
+                    binding.startButton.setText("Start"); // Change button text to "Start"
+                }
             }
         });
 
-        // Stop button hohotoh
-        // Stop button
-        binding.stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Calculate the elapsed time
-                elapsedTime = time_passed-SystemClock.elapsedRealtime();
 
-                // Save the elapsed time in SharedPreferences
-                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putLong("elapsedTime", elapsedTime);
-                editor.putLong("lastElapsedTime", elapsedTime); // Save the last elapsed time
-                editor.apply();
 
-                // Stop the chronometer
-                binding.chronometer.stop();
 
-                // Update button states
-                binding.startButton.setEnabled(true);
-                binding.stopButton.setEnabled(false);
 
-                // Stop the timer
-                timerHandler.removeCallbacks(updateTimerThread);
-            }
-        });
+
+
 
         binding.buttonA.setOnClickListener(new View.OnClickListener() {
 
@@ -180,6 +153,22 @@ public class BlankFragment3 extends Fragment {
         });
         return binding.getRoot();
     }
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        SharedPreferences prefs = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.putLong("startTime", startTime);
+        editor.putLong("pauseOffset", pauseOffset);
+        editor.putBoolean("changed_1", changed_1);
+        editor.putBoolean("changed_2", changed_2);
+        editor.putLong("elapsedTime", elapsedTime);
+
+        editor.apply();
+    }
+
 
 
 }
