@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000">
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="30dp"
+            android:textColor="#FFFFFF" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="320dp"
+            android:layout_height="342dp"
+            android:layout_marginTop="80dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo"
+            ></ImageView>
+
+        <TextView
+            android:id="@+id/time_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="600dp"
+            android:textSize="40dp"
+            android:text="i am a good boyd"
+            android:gravity="center"
+            ></TextView>
+
+    </RelativeLayout>
+</layout>
