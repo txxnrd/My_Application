@@ -13,6 +13,7 @@ public class MainActivity3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+
         Button moveButton = findViewById(R.id.button);
         moveButton.setOnClickListener(new View.OnClickListener() {
             @Override

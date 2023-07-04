@@ -19,6 +19,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import android.content.Context;
 
 
 import com.google.gson.Gson;
@@ -27,6 +28,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import android.app.Dialog;
@@ -61,6 +65,17 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
                 mfriendItems.add(newPerson);
                 mRecyclerAdapter.setFriendList(mfriendItems);
                 mRecyclerAdapter.notifyDataSetChanged();
+                String filename = "my_data.json";
+                Gson gson = new Gson();
+                String json = gson.toJson(mfriendItems);
+                FileOutputStream fos;
+                try {
+                    fos = getContext().openFileOutput(filename, Context.MODE_PRIVATE);
+                    fos.write(json.getBytes());
+                    fos.close();
+                } catch (IOException e) {
+                    Log.e("BlankFragment", "Error saving data to internal storage", e);
+                }
             }
         }
     }
@@ -85,20 +100,44 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
         mRecyclerAdapter.setLongClickListener(this);
 
         mRecyclerView.setAdapter(mRecyclerAdapter);
+        File file = new File(getContext().getFilesDir(), "my_data.json");
+        String filename = "my_data.json";
+        if (!file.exists()) {
 
-        try {
-            InputStream inputStream = requireActivity().getAssets().open("data.json");
-            InputStreamReader reader = new InputStreamReader(inputStream);
+            try {
+                InputStream inputStream = getContext().getAssets().open("data.json");
+                InputStreamReader reader = new InputStreamReader(inputStream);
+                Gson gson = new Gson();
+                mfriendItems = gson.fromJson(reader, new TypeToken<List<FriendItem>>() {
+                }.getType());
+
+                String json = gson.toJson(mfriendItems);
+                FileOutputStream fos = getContext().openFileOutput(filename, Context.MODE_PRIVATE);
+                fos.write(json.getBytes());
+                fos.close();
+            } catch (IOException e) {
+                Log.e("BlankFragment", "Error loading JSON", e);
+            }
+        } else {
+            String json = null;
+            FileInputStream fis;
+            try {
+                fis = getContext().openFileInput(filename);
+                int size = fis.available();
+                byte[] buffer = new byte[size];
+                fis.read(buffer);
+                fis.close();
+                json = new String(buffer, "UTF-8");
+            } catch (IOException e) {
+                Log.e("BlankFragment", "Error loading data from internal storage", e);
+            }
             Gson gson = new Gson();
 
-
-            mfriendItems = gson.fromJson(reader, new TypeToken<List<FriendItem>>() {}.getType());
-
-        } catch (IOException e) {
-            Log.e("BlankFragment", "Error loading JSON", e);
+            mfriendItems = gson.fromJson(json, new TypeToken<List<FriendItem>>() {
+            }.getType());
         }
-        mRecyclerAdapter.setFriendList(mfriendItems);
-        return view;
+            mRecyclerAdapter.setFriendList(mfriendItems);
+            return view;
     }
     public void onItemLongClick(View view, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext()); // AlertDialog를 만들기 위한 빌더 얻기
@@ -109,6 +148,17 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
                 mfriendItems.remove(position);
                 mRecyclerAdapter.setFriendList(mfriendItems);
                 mRecyclerAdapter.notifyDataSetChanged();
+                String filename = "my_data.json";
+                Gson gson = new Gson();
+                String json = gson.toJson(mfriendItems);
+                FileOutputStream fos;
+                try {
+                    fos = getContext().openFileOutput(filename, Context.MODE_PRIVATE);
+                    fos.write(json.getBytes());
+                    fos.close();
+                } catch (IOException e) {
+                    Log.e("BlankFragment", "Error saving data to internal storage", e);
+                }
 
             }
         });
@@ -140,7 +190,6 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
         if (item != null && item.getImageUrl() != null) {
             Glide.with(imageView.getContext())
                     .load(item.getImageUrl())
-                    .placeholder(R.drawable.default_image)
                     .into(imageView);
         } else {
             // Handle the case where item or imageUrl is null
