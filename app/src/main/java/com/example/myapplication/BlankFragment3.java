@@ -36,7 +36,6 @@ public class BlankFragment3 extends Fragment {
     private Handler timerHandler = new Handler();
     private Runnable updateTimerThread;
     boolean changed_1=false,changed_2=false;
-    long elapsedTime=0L;
     int week;
 
     private static final long TIME_THRESHOLD = 2 * 1000;
@@ -44,6 +43,7 @@ public class BlankFragment3 extends Fragment {
     private static final int DEFAULT_IMAGE = R.drawable.character_start;
     private static final int NEW_IMAGE = R.drawable.character_1;
     private static final int NEW_IMAGE_2 = R.drawable.character;
+    private static long elapsedTime = 0L;
 
     @Nullable
     @Override
@@ -69,7 +69,13 @@ public class BlankFragment3 extends Fragment {
 
         dateTextView.setText(week+"주차"+"    "+formattedDate);
 
-        binding.imageView.setImageResource(DEFAULT_IMAGE);
+        if (elapsedTime >= TIME_THRESHOLD_2) {
+            binding.imageView.setImageResource(NEW_IMAGE_2);
+            changed_2=true;
+        } else if (elapsedTime >= TIME_THRESHOLD) {
+            binding.imageView.setImageResource(NEW_IMAGE);
+            changed_1=true;
+        } else binding.imageView.setImageResource(DEFAULT_IMAGE);
 
         binding.startButton.setOnClickListener(new View.OnClickListener() {
 
@@ -83,7 +89,9 @@ public class BlankFragment3 extends Fragment {
                     dataHelper.setTimerCounting(true);
 
                     binding.startButton.setText("Stop");
+
                     binding.chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
+                    elapsedTime = SystemClock.elapsedRealtime() - pauseOffset;
                     binding.chronometer.start();
 
                     // Disabling BottomNavigationView when the timer starts
@@ -92,21 +100,21 @@ public class BlankFragment3 extends Fragment {
                         navigationView.getMenu().getItem(i).setEnabled(false);
                     }
 
-
                     updateTimerThread = new Runnable() {
                         public void run() {
-                            elapsedTime = SystemClock.elapsedRealtime() - startTime;
-                            if (elapsedTime >= TIME_THRESHOLD_2) {
+                            elapsedTime = SystemClock.elapsedRealtime() - startTime + pauseOffset;
+                            if (elapsedTime >= TIME_THRESHOLD_2 && !changed_2) {
                                 binding.imageView.setImageResource(NEW_IMAGE_2);
-
-                            } else if (elapsedTime >= TIME_THRESHOLD) {
-                                binding.imageView.setImageResource(NEW_IMAGE);
                                 changed_2=true;
+                            } else if (elapsedTime >= TIME_THRESHOLD && !changed_1) {
+                                binding.imageView.setImageResource(NEW_IMAGE);
+                                changed_1=true;
                             }
                             timerHandler.postDelayed(this, 1000);
                         }
                     };
                     timerHandler.postDelayed(updateTimerThread, 1000);
+
                 } else {
                     pauseOffset = SystemClock.elapsedRealtime() - binding.chronometer.getBase();
                     dataHelper.setStopTime(new Date(SystemClock.elapsedRealtime()));

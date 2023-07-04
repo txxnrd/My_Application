@@ -25,7 +25,7 @@ public class DataHelper {
     DataHelper(Context context) {
         sharedPref = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
 
-        timerCounting = sharedPref.getBoolean(COUNTING_KEY, true);
+        timerCounting = false;
 
         String startString = sharedPref.getString(START_TIME_KEY, null);
         if (startString != null)

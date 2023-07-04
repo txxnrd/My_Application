@@ -14,13 +14,19 @@
         android:layout_height="495dp"
         android:layout_weight="10"></FrameLayout>
 
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="644dp"
+        android:layout_above="@id/Smenu" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/Smenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="#FF0080"
+        app:backgroundTint="#DFF4C7"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/smenu" />
 
