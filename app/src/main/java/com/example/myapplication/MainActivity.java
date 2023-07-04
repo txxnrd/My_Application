@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     BlankFragment3 blankfragment3;
     private static final int REQUEST_CODE = 1;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
