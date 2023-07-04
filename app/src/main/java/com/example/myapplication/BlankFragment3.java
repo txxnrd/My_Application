@@ -172,10 +172,10 @@ public class BlankFragment3 extends Fragment {
                     Intent intent = new Intent(getActivity(), MadHouse.class);
                     startActivity(intent);
                 }
-//                else if (week==2) {
-//                    Intent intent = new Intent(getActivity(), MadHouse_2.class);
-//                    startActivity(intent);
-//                }
+                else if (week==2) {
+                    Intent intent = new Intent(getActivity(), MadHouse_2.class);
+                    startActivity(intent);
+                }
             }
         });
         return binding.getRoot();
