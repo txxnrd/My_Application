@@ -1,16 +1,14 @@
 package com.example.myapplication;
 
-//package code.with.cal.persistenttimerapp;
-
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 public class DataHelper {
+    private static DataHelper instance;
     private static final String PREFERENCES = "prefs";
     private static final String START_TIME_KEY = "startKey";
     private static final String STOP_TIME_KEY = "stopKey";
@@ -22,11 +20,12 @@ public class DataHelper {
     private boolean timerCounting;
     private Date startTime;
     private Date stopTime;
+    private long pauseOffset;
 
-    public DataHelper(Context context) {
+    DataHelper(Context context) {
         sharedPref = context.getSharedPreferences(PREFERENCES, Context.MODE_PRIVATE);
 
-        timerCounting = sharedPref.getBoolean(COUNTING_KEY, false);
+        timerCounting = sharedPref.getBoolean(COUNTING_KEY, true);
 
         String startString = sharedPref.getString(START_TIME_KEY, null);
         if (startString != null)
@@ -43,6 +42,13 @@ public class DataHelper {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+    }
+
+    public static synchronized DataHelper getInstance(Context context) {
+        if (instance == null) {
+            instance = new DataHelper(context.getApplicationContext());
+        }
+        return instance;
     }
 
     public Date getStartTime() {
@@ -80,5 +86,15 @@ public class DataHelper {
         editor.apply();
     }
 
-}
+    // This method gets the boolean value
+    public boolean getChangedStatus(String key) {
+        return sharedPref.getBoolean(key, false);
+    }
 
+    // This method saves the boolean value
+    public void setChangedStatus(String key, boolean value) {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
+}

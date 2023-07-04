@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     BlankFragment2 blankfragment2;
     BlankFragment3 blankfragment3;
     private static final int REQUEST_CODE = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,39 +40,37 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 int id = item.getItemId();
+                DataHelper dataHelper = DataHelper.getInstance(MainActivity.this);
 
-                if (id == R.id.tab1) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.containers, blankfragment).commit();
-                    return true;
-                } else if (id == R.id.tab2) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.containers, blankfragment2).commit();
-                    return true;
-                } else if (id == R.id.tab3) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.containers, blankfragment3).commit();
-                    return true;
+                // If the timer is not running, switch the screen and disable bottomNavigationView
+                if (!dataHelper.isTimerCounting()) {
+                    if (id == R.id.tab1) {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.containers, blankfragment).commit();
+
+                        return true;
+                    } else if (id == R.id.tab2) {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.containers, blankfragment2).commit();
+
+                        return true;
+                    } else if (id == R.id.tab3) {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.containers, blankfragment3).commit();
+
+                        return true;
+                    }
                 }
-
+                else
+                    bottomNavigationView.setEnabled(false);
                 return false;
             }
         });
+
+
 
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-/*
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
-            FriendItem newPerson = (FriendItem) data.getParcelableExtra("newperson");
-            Bundle args = new Bundle();
-            args.putParcelable("newPerson", newPerson);
-            blankfragment.setArguments(args);
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.containers, blankfragment).commit();
-
-        }
-
- */
     }
 }

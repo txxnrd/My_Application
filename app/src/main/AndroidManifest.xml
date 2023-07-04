@@ -38,7 +38,7 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".MadHouse"></activity>
         <activity android:name=".MadHouse_2"></activity>
-
+        <activity android:name=".ChronometerHelper"></activity>
 
     </application>
 
