@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         ViewPager viewPager = findViewById(R.id.viewPager);
         bottomNavigationView = findViewById(R.id.Smenu);
+        viewPager.setOffscreenPageLimit(2);
 
         // Initialize ViewPager and BottomNavigationView
 
