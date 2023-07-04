@@ -44,6 +44,28 @@ public class BlankFragment3 extends Fragment {
     private static final int NEW_IMAGE = R.drawable.character_1;
     private static final int NEW_IMAGE_2 = R.drawable.character;
     private static long elapsedTime = 0L;
+    private Calendar startCalendar = Calendar.getInstance();
+    private Runnable checkWeekChange = new Runnable() {
+        int previousWeek = week;
+        public void run() {
+            Calendar currentCalendar = Calendar.getInstance();
+            week = ((int) ((currentCalendar.getTime().getTime() / (1000*60*60*24)) -
+                    (int) (startCalendar.getTime().getTime() / (1000*60*60*24))) / 7) + 1;
+            if (week != previousWeek) {
+                //long elapsedChronoTime = SystemClock.elapsedRealtime() - binding.chronometer.getBase();
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putLong("elapsedTime", elapsedTime);
+                editor.apply();
+
+                binding.chronometer.setBase(SystemClock.elapsedRealtime());
+                pauseOffset = 0;
+                elapsedTime = 0;
+                previousWeek = week;
+            }
+            timerHandler.postDelayed(this, 24*60*60*1000);  // Check every day
+        }
+    };
 
     @Nullable
     @Override
@@ -57,9 +79,12 @@ public class BlankFragment3 extends Fragment {
         TextView dateTextView = binding.dateTextView;
 
 
+
         Calendar currentCalendar = Calendar.getInstance();
         Calendar startCalendar = Calendar.getInstance();
         startCalendar.set(2023, 5, 29);
+
+        timerHandler.postDelayed(checkWeekChange, 24*60*60*1000);
 
         week = ((int) ((currentCalendar.getTime().getTime() / (1000*60*60*24)) -
                 (int) (startCalendar.getTime().getTime() / (1000*60*60*24))) / 7) + 1;
@@ -94,6 +119,13 @@ public class BlankFragment3 extends Fragment {
                     elapsedTime = SystemClock.elapsedRealtime() - pauseOffset;
                     binding.chronometer.start();
 
+
+                    // Save elapsedTime in SharedPreferences
+                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putLong("elapsedTime", elapsedTime);
+                    editor.apply();
+
                     // Disabling BottomNavigationView when the timer starts
                     navigationView.setEnabled(false);
                     for (int i = 0; i < navigationView.getMenu().size(); i++) {
@@ -103,6 +135,13 @@ public class BlankFragment3 extends Fragment {
                     updateTimerThread = new Runnable() {
                         public void run() {
                             elapsedTime = SystemClock.elapsedRealtime() - startTime + pauseOffset;
+
+                            // Save elapsedTime in SharedPreferences
+                            SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putLong("elapsedTime", elapsedTime);
+                            editor.apply();
+
                             if (elapsedTime >= TIME_THRESHOLD_2 && !changed_2) {
                                 binding.imageView.setImageResource(NEW_IMAGE_2);
                                 changed_2=true;
@@ -114,6 +153,7 @@ public class BlankFragment3 extends Fragment {
                         }
                     };
                     timerHandler.postDelayed(updateTimerThread, 1000);
+
 
                 } else {
                     pauseOffset = SystemClock.elapsedRealtime() - binding.chronometer.getBase();
