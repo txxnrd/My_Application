@@ -17,16 +17,16 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-public class MadHouse_2 extends AppCompatActivity {
+public class MadHouse_4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_madhouse2);
+        setContentView(R.layout.activity_madhouse4);
 
         Button button1 = (Button) findViewById(R.id.button1); // Replace with your actual Button ID
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MadHouse_2.this, MadHouse.class);
+                Intent intent = new Intent(MadHouse_4.this, MadHouse_3.class);
                 startActivity(intent);
             }
         });
@@ -34,8 +34,8 @@ public class MadHouse_2 extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(MadHouse_2.this, MadHouse_3.class);
-                startActivity(intent1);
+                Intent intent = new Intent(MadHouse_4.this, MadHouse_5.class);
+                startActivity(intent);
             }
         });
 
@@ -52,15 +52,15 @@ public class MadHouse_2 extends AppCompatActivity {
                 (int) (startCalendar.getTime().getTime() / (1000*60*60*24))) / 7) + 1;
 
         TextView textView_2 = findViewById(R.id.dateTextView); // Replace with your actual TextView IDs
-        textView_2.setText("2주차 기록");
+        textView_2.setText("4주차 기록");
 
         // Load elapsedTime from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         long elapsedTime;
-        if (week == 2) {
+        if (week == 4) {
             elapsedTime = sharedPreferences.getLong("elapsedTime", 0);
         } else {
-            elapsedTime = sharedPreferences.getLong("elapsedTimeWeek2", 0);
+            elapsedTime = sharedPreferences.getLong("elapsedTimeWeek4", 0);
         }
         String formattedTime = String.format(Locale.getDefault(), "%02d:%02d:%02d",
                 TimeUnit.MILLISECONDS.toHours(elapsedTime),
@@ -89,5 +89,6 @@ public class MadHouse_2 extends AppCompatActivity {
     }
 
 }
+
 
 

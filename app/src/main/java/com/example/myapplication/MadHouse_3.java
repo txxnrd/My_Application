@@ -17,16 +17,16 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-public class MadHouse_2 extends AppCompatActivity {
+public class MadHouse_3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_madhouse2);
+        setContentView(R.layout.activity_madhouse3);
 
         Button button1 = (Button) findViewById(R.id.button1); // Replace with your actual Button ID
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MadHouse_2.this, MadHouse.class);
+                Intent intent = new Intent(MadHouse_3.this, MadHouse_2.class);
                 startActivity(intent);
             }
         });
@@ -34,8 +34,8 @@ public class MadHouse_2 extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(MadHouse_2.this, MadHouse_3.class);
-                startActivity(intent1);
+                Intent intent = new Intent(MadHouse_3.this, MadHouse_4.class);
+                startActivity(intent);
             }
         });
 
@@ -52,22 +52,29 @@ public class MadHouse_2 extends AppCompatActivity {
                 (int) (startCalendar.getTime().getTime() / (1000*60*60*24))) / 7) + 1;
 
         TextView textView_2 = findViewById(R.id.dateTextView); // Replace with your actual TextView IDs
-        textView_2.setText("2주차 기록");
+        textView_2.setText("3주차 기록");
 
         // Load elapsedTime from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         long elapsedTime;
-        if (week == 2) {
+        if (week == 3) {
             elapsedTime = sharedPreferences.getLong("elapsedTime", 0);
         } else {
-            elapsedTime = sharedPreferences.getLong("elapsedTimeWeek2", 0);
+            elapsedTime = sharedPreferences.getLong("elapsedTimeWeek3", 0);
         }
-        String formattedTime = String.format(Locale.getDefault(), "%02d:%02d:%02d",
-                TimeUnit.MILLISECONDS.toHours(elapsedTime),
-                TimeUnit.MILLISECONDS.toMinutes(elapsedTime) -
-                        TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(elapsedTime)),
-                TimeUnit.MILLISECONDS.toSeconds(elapsedTime) -
-                        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(elapsedTime)));
+
+
+        String formattedTime;
+        if (elapsedTime == 0) {
+            formattedTime = "00:00:00";
+        } else {
+            formattedTime = String.format(Locale.getDefault(), "%02d:%02d:%02d",
+                    TimeUnit.MILLISECONDS.toHours(elapsedTime),
+                    TimeUnit.MILLISECONDS.toMinutes(elapsedTime) -
+                            TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(elapsedTime)),
+                    TimeUnit.MILLISECONDS.toSeconds(elapsedTime) -
+                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(elapsedTime)));
+        }
 
         textView_1.setText(formattedTime);
         ImageView imageView = findViewById(R.id.imageView); // Replace with your actual ImageView ID
@@ -89,5 +96,6 @@ public class MadHouse_2 extends AppCompatActivity {
     }
 
 }
+
 
 
