@@ -33,10 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1;
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 655e444035d0520c5023419841e87a39448f787f
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,10 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
         ViewPager viewPager = findViewById(R.id.viewPager);
         bottomNavigationView = findViewById(R.id.Smenu);
-<<<<<<< HEAD
 
-=======
->>>>>>> 655e444035d0520c5023419841e87a39448f787f
+
         viewPager.setOffscreenPageLimit(2);
 
         // Initialize ViewPager and BottomNavigationView

@@ -44,6 +44,15 @@ public class MadHouse extends AppCompatActivity {
             }
         });
 
+        ImageButton button3 = (ImageButton) findViewById(R.id.button_home); // Replace with your actual Button ID
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MadHouse.this, BlankFragment3.class);
+                startActivity(intent);
+            }
+        });
+
         TextView textView_1 = findViewById(R.id.time_history); // Replace with your actual TextView ID
 // Get the current date
         Calendar currentCalendar = Calendar.getInstance();

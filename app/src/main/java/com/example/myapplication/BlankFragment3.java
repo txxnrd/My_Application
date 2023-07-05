@@ -210,7 +210,9 @@ public class BlankFragment3 extends Fragment {
                 }
             }
         });
-
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("time", Context.MODE_PRIVATE);
+        elapsedTime = sharedPreferences.getLong("elapsedTime", 0);
+        pauseOffset = sharedPreferences.getLong("pauseOffset", 0);
         // If timer was counting before, restore it
         if (dataHelper.isTimerCounting()) {
             Date prevStart = dataHelper.getStartTime();
@@ -222,7 +224,10 @@ public class BlankFragment3 extends Fragment {
                 binding.chronometer.start();
             }
         }
-
+        else {
+            binding.chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
+            binding.startButton.setText("Start");
+        }
 
         return binding.getRoot();
     }

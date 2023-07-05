@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
-=======
-<resources>
-    <style name="Theme.MyApplication" parent="Theme.AppCompat.Light.DarkActionBar">
->>>>>>> 655e444035d0520c5023419841e87a39448f787f
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/color_primary</item>
         <item name="colorPrimaryDark">@color/color_primary_dark</item>
         <item name="colorAccent">@color/color_accent</item>
     </style>
-<<<<<<< HEAD
 </resources>
-=======
-</resources>
->>>>>>> 655e444035d0520c5023419841e87a39448f787f
