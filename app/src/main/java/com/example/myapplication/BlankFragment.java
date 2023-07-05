@@ -20,6 +20,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import android.content.Context;
+import android.util.Log;
 
 
 import com.google.gson.Gson;
@@ -39,6 +40,11 @@ import android.content.DialogInterface;
 import android.view.Window;
 import android.view.MotionEvent;
 import static android.app.Activity.RESULT_OK;
+import android.net.Uri;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+
+
 
 
 
@@ -183,6 +189,26 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
         TextView descriptionTextView = dialogView.findViewById(R.id.descriptionTextView);
         ImageView imageView = dialogView.findViewById(R.id.imageView);
         ImageView closeButton = dialogView.findViewById(R.id.button);
+        ImageView callButton = dialogView.findViewById(R.id.callbutton);
+        PackageManager packageManager = getActivity().getPackageManager();
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+        boolean isIntentSafe = activities.size() > 0;
+        Log.d("Intent check", "Is intent safe? " + isIntentSafe);
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 사용자의 전화번호, 예를 들면 "1234567890"
+                String phoneNumber = "tel:" + item.getNumber().toString().replaceAll("-", "");
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse(phoneNumber));
+                Log.e("Why1", "Error loading DIAL");
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(intent);
+                    Log.e("Why2", "Error loading DIAL");
+                }
+            }
+        });
 
         nameTextView.setText(item.getName());
         phonenumber.setText(item.getNumber());
