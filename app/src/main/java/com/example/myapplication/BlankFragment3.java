@@ -21,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Random;
 import java.util.Date;
 import java.util.Locale;
 
@@ -45,6 +46,21 @@ public class BlankFragment3 extends Fragment {
     private static final int NEW_IMAGE_2 = R.drawable.character;
     private static long elapsedTime = 0L;
     private Calendar startCalendar = Calendar.getInstance();
+    int[] images = {DEFAULT_IMAGE, NEW_IMAGE, NEW_IMAGE_2};
+    int currentImageIndex = 0;
+    Handler imageChangeHandler = new Handler();
+    Runnable imageChangeRunnable = new Runnable() {
+        @Override
+        public void run() {
+            int newIndex;
+            do {
+                newIndex = new Random().nextInt(images.length);
+            } while (newIndex == currentImageIndex);
+            currentImageIndex = newIndex;
+            binding.imageView.setImageResource(images[currentImageIndex]);
+            imageChangeHandler.postDelayed(this, 2000);
+        }
+    };
     private Runnable checkWeekChange = new Runnable() {
         int previousWeek = week;
         public void run() {

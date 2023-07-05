@@ -47,7 +47,8 @@ public class MadHouse extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MadHouse.this, BlankFragment3.class);
+                Intent intent = new Intent(MadHouse.this, MainActivity.class);
+                intent.putExtra("OPEN_FRAGMENT", 2); // 번호 3은 BlankFragment3를 의미합니다.
                 startActivity(intent);
             }
         });
