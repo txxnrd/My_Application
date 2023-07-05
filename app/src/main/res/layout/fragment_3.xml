@@ -7,42 +7,47 @@
         android:background="#000000">
 
 
-        <Button
+        <ImageButton
             android:id="@+id/buttonA"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="21dp"
-            android:text="M"
-            android:textSize="20dp">
-
-
-        </Button>
-        <Button
-            android:id="@+id/buttonH"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="21dp"
-            android:text="H"
-            android:textSize="20dp">
-
-        </Button>
+            android:background="@drawable/final_tab3_home">
+        </ImageButton>
+        <TextView
+            android:text="나의 몰입시간"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:layout_marginTop="10dp"
+            android:textSize="30dp"
+            android:textColor="#FFFFFF"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#FFFFFF"
+            android:layout_marginTop="68dp"
+            ></View>
 
         <TextView
             android:id="@+id/dateTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="80dp"
             android:textSize="30dp"
+            android:textColor="#FFFFFF"
+            android:src="@drawable/final_tab3_home"
              />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="320dp"
-            android:layout_height="342dp"
-            android:layout_marginTop="31dp"
+            android:layout_width="220dp"
+            android:layout_height="262dp"
+            android:layout_marginTop="100dp"
             android:layout_centerHorizontal="true"
             ></ImageView>
 
@@ -50,7 +55,7 @@
             android:id="@+id/chronometer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="380dp"
             android:gravity="center_horizontal"
             android:textSize="80dp"
             android:textColor="#FFFFFF"/>

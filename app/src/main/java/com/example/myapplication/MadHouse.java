@@ -43,8 +43,7 @@ public class MadHouse extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        ImageButton button3 = (ImageButton) findViewById(R.id.button_home); // Replace with your actual Button ID
+        ImageButton button3 = (ImageButton) findViewById(R.id.button3); // Replace with your actual Button ID
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +51,15 @@ public class MadHouse extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        ImageButton button3 = (ImageButton) findViewById(R.id.button_home); // Replace with your actual Button ID
+//        button3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MadHouse.this, BlankFragment3.class);
+//                startActivity(intent);
+//            }
+//        });
 
         TextView textView_1 = findViewById(R.id.time_history); // Replace with your actual TextView ID
 // Get the current date
@@ -66,7 +74,7 @@ public class MadHouse extends AppCompatActivity {
                 (int) (startCalendar.getTime().getTime() / (1000*60*60*24))) / 7) + 1;
 
         TextView textView_2 = findViewById(R.id.dateTextView); // Replace with your actual TextView IDs
-        textView_2.setText(String.valueOf(week)+" 주차 기록");
+        textView_2.setText(" 1주차 몰입이");
 
         // Load elapsedTime from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
@@ -85,9 +93,9 @@ public class MadHouse extends AppCompatActivity {
 
         textView_1.setText(formattedTime);
         ImageView imageView = findViewById(R.id.imageView); // Replace with your actual ImageView ID
-        if (elapsedTime <= 2000) {
+        if (elapsedTime <= 2000*10) {
             imageView.setImageResource(R.drawable.character_start); // Replace with your actual image resources
-        } else if (elapsedTime <= 4000) {
+        } else if (elapsedTime <= 4000*10) {
             imageView.setImageResource(R.drawable.character_1);
         } else {
             imageView.setImageResource(R.drawable.character);

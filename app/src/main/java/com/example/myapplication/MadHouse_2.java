@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +24,7 @@ public class MadHouse_2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_madhouse2);
 
-        Button button1 = (Button) findViewById(R.id.button1); // Replace with your actual Button ID
+        ImageButton button1 = (ImageButton) findViewById(R.id.button1); // Replace with your actual Button ID
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -31,7 +32,7 @@ public class MadHouse_2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Button button2 = (Button) findViewById(R.id.button2); // Replace with your actual Button ID
+        ImageButton button2 = (ImageButton) findViewById(R.id.button2); // Replace with your actual Button ID
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +65,7 @@ public class MadHouse_2 extends AppCompatActivity {
 
 
         TextView textView_2 = findViewById(R.id.dateTextView); // Replace with your actual TextView IDs
-        textView_2.setText("2주차 기록");
+        textView_2.setText("2주차 몰입이");
 
         // Load elapsedTime from SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
@@ -83,9 +84,9 @@ public class MadHouse_2 extends AppCompatActivity {
 
         textView_1.setText(formattedTime);
         ImageView imageView = findViewById(R.id.imageView); // Replace with your actual ImageView ID
-        if (elapsedTime <= 2000) {
+        if (elapsedTime <= 2000*10) {
             imageView.setImageResource(R.drawable.character_start); // Replace with your actual image resources
-        } else if (elapsedTime <= 4000) {
+        } else if (elapsedTime <= 4000*10) {
             imageView.setImageResource(R.drawable.character_1);
         } else {
             imageView.setImageResource(R.drawable.character);
