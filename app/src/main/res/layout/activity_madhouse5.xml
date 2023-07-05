@@ -34,15 +34,14 @@
             android:gravity="center"
             ></TextView>
 
-        <ImageButton
-            android:id="@+id/button2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="3dp"
-            android:layout_marginTop="380dp"
-            android:text="Button"
-            android:background="@drawable/right"/>
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="44dp"
+            android:text="Button" />
+
 
     </RelativeLayout>
 </layout>

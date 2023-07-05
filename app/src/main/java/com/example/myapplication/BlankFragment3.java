@@ -55,7 +55,7 @@ public class BlankFragment3 extends Fragment {
                 //long elapsedChronoTime = SystemClock.elapsedRealtime() - binding.chronometer.getBase();
                 SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putLong("elapsedTime", elapsedTime);
+                editor.putLong("elapsedTimeWeek" + week, elapsedTime);
                 editor.apply();
 
                 binding.chronometer.setBase(SystemClock.elapsedRealtime());
@@ -123,7 +123,7 @@ public class BlankFragment3 extends Fragment {
                     // Save elapsedTime in SharedPreferences
                     SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putLong("elapsedTime", elapsedTime);
+                    editor.putLong("elapsedTimeWeek"+ week, elapsedTime);
                     editor.apply();
 
                     // Disabling BottomNavigationView when the timer starts
