@@ -91,7 +91,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.Vi
                     .load(item.getImageUrl())
                     .into(profile);
             name.setText(item.getName());
-            message.setText(item.getNumber());
+            message.setText(item.getDescription());
         }
 
         @Override

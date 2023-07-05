@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.content.Intent;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -88,7 +89,7 @@ public class BlankFragment extends Fragment implements MyRecyclerAdapter.ItemCli
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_1, container, false);
-        Button iconplus = view.findViewById(R.id.iconplus);
+        ImageButton iconplus = view.findViewById(R.id.iconplus);
 
         iconplus.setOnClickListener(new View.OnClickListener() {
             @Override

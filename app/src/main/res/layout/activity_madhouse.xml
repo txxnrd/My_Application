@@ -54,14 +54,6 @@
             android:gravity="center"
             ></TextView>
 
-        <!--        <Chronometer-->
-        <!--            android:id="@+id/chronometer"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="380dp"-->
-        <!--            android:gravity="center_horizontal"-->
-        <!--            android:textSize="80dp"-->
-        <!--            android:textColor="#FFFFFF"/>-->
 
         <ImageButton
             android:id="@+id/button2"
