@@ -205,7 +205,7 @@ public class BlankFragment3 extends Fragment {
                             .show();
                 } else {
 
-                        Intent intent = new Intent(getActivity(), Graph.class);
+                        Intent intent = new Intent(getActivity(), MadHouse.class);
                         startActivity(intent);
                 }
             }
