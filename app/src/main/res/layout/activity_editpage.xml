@@ -5,58 +5,40 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <EditText
+        android:id="@+id/titleTextView"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
         android:scaleType = "centerCrop"/>
 
-    <TextView
-        android:id="@+id/nameTextView"
+    <EditText
+        android:id="@+id/textTextView"
         android:layout_width="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="70dp"
         android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
-
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="1.0"
         />
 
-    <TextView
-        android:id="@+id/phonenumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
-
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Phone"
-        android:ems="10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
-    <ImageButton
-        android:id="@+id/callbutton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/image_x"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
 
     <ImageButton
         android:id="@+id/button"
@@ -64,12 +46,18 @@
         android:layout_height="40dp"
         app:srcCompat="@drawable/image_x"
         android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/callbutton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
-
-
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:id="@+id/editbutton"
+        android:text="수정"
+        android:textSize = "15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <FrameLayout
         android:id="@+id/container1"
