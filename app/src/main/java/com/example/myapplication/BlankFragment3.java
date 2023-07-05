@@ -193,6 +193,23 @@ public class BlankFragment3 extends Fragment {
                 }
             }
         });
+        binding.buttonH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.startButton.getText().toString().equalsIgnoreCase("Stop")) {
+                    new AlertDialog.Builder(getActivity())
+                            .setTitle("Stop the Stopwatch")
+                            .setMessage("Please stop the stopwatch before proceeding.")
+                            .setPositiveButton(android.R.string.yes, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                } else {
+
+                        Intent intent = new Intent(getActivity(), Graph.class);
+                        startActivity(intent);
+                }
+            }
+        });
 
         // If timer was counting before, restore it
         if (dataHelper.isTimerCounting()) {
