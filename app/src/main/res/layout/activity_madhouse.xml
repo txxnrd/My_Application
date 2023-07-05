@@ -7,49 +7,73 @@
         android:layout_height="match_parent"
         android:background="#000000"
         tools:ignore="MissingClass">
+        <TextView
+            android:text="몰입이의 집"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_marginTop="10dp"
+            android:textSize="30dp"
+            android:textColor="#FFFFFF"
+
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#FFFFFF"
+            android:layout_marginTop="68dp"
+            ></View>
 
         <TextView
             android:id="@+id/dateTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="90dp"
             android:textSize="30dp"
             android:textColor="#FFFFFF" />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="320dp"
-            android:layout_height="342dp"
-            android:layout_marginTop="80dp"
+            android:layout_width="220dp"
+            android:layout_height="262dp"
+            android:layout_marginTop="140dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/logo"
             ></ImageView>
+
 
         <TextView
             android:id="@+id/time_history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="600dp"
-            android:textSize="40dp"
-            android:text="i am a good boyd"
+            android:layout_marginTop="450dp"
+            android:textSize="60dp"
+            android:textColor="#FFFFFFFF"
+            android:text="i a"
             android:gravity="center"
             ></TextView>
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barChart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
 
         <ImageButton
             android:id="@+id/button2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="3dp"
-            android:layout_marginTop="380dp"
-            android:text="Button"
-            android:background="@drawable/right"/>
+            android:layout_marginTop="340dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/final_tab3_arrow"
+            android:text="Button" />
+        <ImageButton
+            android:id="@+id/button3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/timer"
+            android:text="Button" />
+
 
     </RelativeLayout>
 </layout>

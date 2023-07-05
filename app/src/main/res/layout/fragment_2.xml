@@ -5,29 +5,29 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".BlankFragment">
-
-    <!--TODO: Update blank fragment layout-->
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="추억이 담긴 사진들"
-        android:textSize="20sp"
-        android:textColor="#000"
-        android:textStyle="bold" />
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="몰입캠프에서 쌓은 추억들"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:textStyle="bold"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
 
-    <GridView
-        android:id="@+id/gridview"
-        android:layout_width="wrap_content"
-        android:layout_height="835dp"
-        android:background="#dedede"
-        android:gravity="center"
-        android:numColumns="2"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="16dp" />
+    </LinearLayout>
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

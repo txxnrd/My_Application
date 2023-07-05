@@ -3,15 +3,18 @@
     <item
         android:id="@+id/tab1"
         android:enabled="true"
-        android:title="Home" />
+        android:icon="@drawable/final_bottom_tab1"
+        android:title="Contact" />
     <item
         android:id="@+id/tab2"
         android:enabled="true"
-        android:title="Search"/>
+        android:icon="@drawable/final_bottom_tab2"
+        android:title="Image"/>
 
     <item
         android:id="@+id/tab3"
         android:enabled="true"
-        android:title="New"/>
+        android:icon="@drawable/final_bottom_tab3"
+        android:title="Timer" />
 
 </menu>

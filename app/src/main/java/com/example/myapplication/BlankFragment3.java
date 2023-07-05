@@ -21,6 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Random;
 import java.util.Date;
 import java.util.Locale;
 
@@ -38,13 +39,28 @@ public class BlankFragment3 extends Fragment {
     boolean changed_1=false,changed_2=false;
     int week;
 
-    private static final long TIME_THRESHOLD = 2 * 1000;
-    private static final long TIME_THRESHOLD_2 = 4 * 1000;
+    private static final long TIME_THRESHOLD = 20 * 1000;
+    private static final long TIME_THRESHOLD_2 = 40 * 1000;
     private static final int DEFAULT_IMAGE = R.drawable.character_start;
     private static final int NEW_IMAGE = R.drawable.character_1;
     private static final int NEW_IMAGE_2 = R.drawable.character;
     private static long elapsedTime = 0L;
     private Calendar startCalendar = Calendar.getInstance();
+    int[] images = {DEFAULT_IMAGE, NEW_IMAGE, NEW_IMAGE_2};
+    int currentImageIndex = 0;
+    Handler imageChangeHandler = new Handler();
+    Runnable imageChangeRunnable = new Runnable() {
+        @Override
+        public void run() {
+            int newIndex;
+            do {
+                newIndex = new Random().nextInt(images.length);
+            } while (newIndex == currentImageIndex);
+            currentImageIndex = newIndex;
+            binding.imageView.setImageResource(images[currentImageIndex]);
+            imageChangeHandler.postDelayed(this, 2000);
+        }
+    };
     private Runnable checkWeekChange = new Runnable() {
         int previousWeek = week;
         public void run() {
@@ -193,24 +209,10 @@ public class BlankFragment3 extends Fragment {
                 }
             }
         });
-        binding.buttonH.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (binding.startButton.getText().toString().equalsIgnoreCase("Stop")) {
-                    new AlertDialog.Builder(getActivity())
-                            .setTitle("Stop the Stopwatch")
-                            .setMessage("Please stop the stopwatch before proceeding.")
-                            .setPositiveButton(android.R.string.yes, null)
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                } else {
 
-                        Intent intent = new Intent(getActivity(), Graph.class);
-                        startActivity(intent);
-                }
-            }
-        });
-
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("time", Context.MODE_PRIVATE);
+        elapsedTime = sharedPreferences.getLong("elapsedTime", 0);
+        pauseOffset = sharedPreferences.getLong("pauseOffset", 0);
         // If timer was counting before, restore it
         if (dataHelper.isTimerCounting()) {
             Date prevStart = dataHelper.getStartTime();
@@ -222,8 +224,37 @@ public class BlankFragment3 extends Fragment {
                 binding.chronometer.start();
             }
         }
-
+        else {
+            binding.chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
+            binding.startButton.setText("Start");
+        }
 
         return binding.getRoot();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("time", Context.MODE_PRIVATE);
+        elapsedTime = sharedPreferences.getLong("elapsedTime", 0);
+        pauseOffset = sharedPreferences.getLong("pauseOffset", 0);
+        if (dataHelper.isTimerCounting()) {
+            binding.chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
+            binding.chronometer.start();
+        } else {
+            binding.chronometer.setBase(SystemClock.elapsedRealtime() - pauseOffset);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("time", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putLong("elapsedTime", elapsedTime);
+        editor.putLong("pauseOffset", pauseOffset);
+        editor.apply();
+        if (binding.startButton.getText().toString().equalsIgnoreCase("Stop")) {
+            binding.chronometer.stop();
+        }
     }
 }

@@ -21,18 +21,23 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_weight="1" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="20dp"
+            android:background="@drawable/final_tab1_plus"
             android:text="+"
-            android:textSize="30sp"
-            android:textColor="#000"
-            android:textStyle="bold"
             android:id="@+id/iconplus"/>
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/buttonA"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_marginRight="21dp"-->
+<!--            android:background="@drawable/final_tab3_home">-->
     </LinearLayout>
-
-
 
 
 

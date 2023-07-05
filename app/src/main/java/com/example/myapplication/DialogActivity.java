@@ -42,6 +42,8 @@ public class DialogActivity extends AppCompatActivity {
         EditText editTextPhone = findViewById(R.id.editTextPhone);
         ImageView imageView = findViewById(R.id.imageView);
 
+
+
         Button button = findViewById(R.id.button);
         imageView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -59,6 +61,12 @@ public class DialogActivity extends AppCompatActivity {
                 String name = editTextName.getText().toString();
                 String phone = editTextPhone.getText().toString();
                 String description = editTextDescription.getText().toString();
+
+                if (phone.length() == 10) {
+                    phone = phone.substring(0, 3) + "-" + phone.substring(3, 6) + "-" + phone.substring(6, 10);
+                } else if (phone.length() == 11) {
+                    phone = phone.substring(0, 3) + "-" + phone.substring(3, 7) + "-" + phone.substring(7, 11);
+                }
 
                 FriendItem friendItem = new FriendItem();
                 friendItem.setName(name);

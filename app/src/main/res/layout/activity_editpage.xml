@@ -1,51 +1,43 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/day"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:gravity="center_horizontal"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"/>
-
     <EditText
         android:id="@+id/titleTextView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:layout_height="70dp"
+        android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/day"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView"
-        app:layout_constraintBottom_toTopOf="@+id/textTextView"/>
+        android:scaleType = "centerCrop"/>
 
     <EditText
         android:id="@+id/textTextView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintBottom_toTopOf="@+id/button"/>
+        app:layout_constraintHorizontal_bias="1.0"
+        />
 
 
     <ImageButton
@@ -71,7 +63,8 @@
         android:id="@+id/container1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        tools:layout_editor_absoluteX="-132dp"
+        tools:layout_editor_absoluteY="199dp">
 
 
     </FrameLayout>
