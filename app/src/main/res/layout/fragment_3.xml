@@ -16,6 +16,17 @@
             android:text="M"
             android:textSize="20dp">
 
+
+        </Button>
+        <Button
+            android:id="@+id/buttonH"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="21dp"
+            android:text="H"
+            android:textSize="20dp">
+
         </Button>
 
         <TextView
