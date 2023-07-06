@@ -1,7 +1,7 @@
 # My_Application
 
 
-####😡몰입이를 화나게 하라😡
+#### 😡몰입이를 화나게 하라😡
 
 Be Mad. MadCamp의 본질을 구현한 앱이다.
 
@@ -17,7 +17,7 @@ Be Mad. MadCamp의 본질을 구현한 앱이다.
 <img width="266" alt="image" src="https://github.com/txxnrd/My_Application/assets/106647507/37a892d3-e1db-4e7a-94df-3214dd7920d0">
 
 ***
-####전화번호부
+#### 전화번호부
 Tab1에는 전화번호를 구현하였다. RecyclerView를 활용하였으며, 전화번호 추가 및 삭제가 가능하다.
 
 
@@ -27,7 +27,7 @@ Tab1에는 전화번호를 구현하였다. RecyclerView를 활용하였으며, 
 <img width="234" alt="image" src="https://github.com/txxnrd/My_Application/assets/106647507/951385a5-fb9f-487f-a218-9eee36f81cfd">
 
 ***
-####이미지
+#### 이미지
 
 갤러리를 구현하였다.상세보기를 지원하며, 수정 및 갤러리에서 추가가 가능하다.
 
