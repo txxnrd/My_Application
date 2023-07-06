@@ -202,10 +202,10 @@ public class BlankFragment3 extends Fragment {
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 } else {
-                    if (week == 1) {
+
                         Intent intent = new Intent(getActivity(), MadHouse.class);
                         startActivity(intent);
-                    }
+
                 }
             }
         });
