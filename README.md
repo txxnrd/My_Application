@@ -44,45 +44,4 @@ Tab1에는 전화번호를 구현하였다. RecyclerView를 활용하였으며, 
 
 
 
-***
-## 전화번호부
-Tab1에는 전화번호를 구현하였다. RecyclerView를 활용하였으며, 전화번호 추가 및 삭제가 가능하다.
-
-
-상세보기 또한 구현이 되어 있다.
-
-
-<img width="234" alt="image" src="https://github.com/txxnrd/My_Application/assets/106647507/951385a5-fb9f-487f-a218-9eee36f81cfd">
-
-***
-## 이미지
-
-갤러리를 구현하였다. 상세 보기를 지원하며, 수정 및 갤러리에서 추가가 가능하다.
-
-<img width="230" alt="스크린샷 2023-07-06 오후 3 40 05" src="https://github.com/txxnrd/My_Application/assets/106647507/8f785710-39d5-4df2-817b-71ebc6f8e906">
-
-
-
-
-
-
-***
-## 전화번호부
-Tab1에는 전화번호를 구현하였다. RecyclerView를 활용하였으며, 전화번호 추가 및 삭제가 가능하다.
-
-
-상세보기 또한 구현이 되어 있다.
-
-
-<img width="234" alt="image" src="https://github.com/txxnrd/My_Application/assets/106647507/951385a5-fb9f-487f-a218-9eee36f81cfd">
-
-***
-## 이미지
-
-갤러리를 구현하였다. 상세 보기를 지원하며, 수정 및 갤러리에서 추가가 가능하다.
-
-<img width="230" alt="스크린샷 2023-07-06 오후 3 40 05" src="https://github.com/txxnrd/My_Application/assets/106647507/8f785710-39d5-4df2-817b-71ebc6f8e906">
-
-
-
 
