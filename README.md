@@ -8,10 +8,9 @@ Be Mad. MadCamp의 본질을 구현한 앱이다.
 
 시간이 지날수록 몰입이는 화가 나게 된다.
 
-![app-logo](https://github.com/txxnrd/My_Application/assets/106647507/70132734-53ed-4d17-a45a-85dc4a12645e)
+Mad해지는 몰입이를 보기 위해 수강생들은 더욱 더 몰입을 하게 된다.
 
-
-주차별로 화난 몰입이를 볼 수 있어 몰입을 유도할 수 있다.
+주차별로 화난 몰입이를 볼 수 있어 몰입을 유도할 수 있는 것이다.
 
 1주차 몰입이는 몰입을 오래해서 아주 단단히 화났다.
 <img width="266" alt="image" src="https://github.com/txxnrd/My_Application/assets/106647507/37a892d3-e1db-4e7a-94df-3214dd7920d0">
