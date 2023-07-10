@@ -16,8 +16,9 @@ Mad해지는 몰입이를 보기 위해 수강생들은 더욱 더 몰입을 하
 <img width="266" alt="image" src="https://github.com/txxnrd/My_Application/assets/106647507/37a892d3-e1db-4e7a-94df-3214dd7920d0">
 
 3주차 몰입이는 몰입을 아예 안해서 아주 행복하다.
-![스크린샷 2023-07-05 오후 8 23 49](https://github.com/txxnrd/My_Application/assets/106647507/b9867580-7762-4879-b30f-6fdd434922cf)
 
+
+<img width="270" alt="스크린샷 2023-07-10 오후 11 15 26" src="https://github.com/txxnrd/My_Application/assets/106647507/691ba090-fb81-4098-984e-48402ec329c1">
 
 
 
