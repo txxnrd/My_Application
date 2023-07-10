@@ -18,42 +18,8 @@ Mad해지는 몰입이를 보기 위해 수강생들은 더욱 더 몰입을 하
 3주차 몰입이는 몰입을 아예 안해서 아주 행복하다.
 ![스크린샷 2023-07-05 오후 8 23 49](https://github.com/txxnrd/My_Application/assets/106647507/b9867580-7762-4879-b30f-6fdd434922cf)
 
-# My_Application
 
 
-## 😡몰입이를 화나게 하라😡
-
-Be Mad. MadCamp의 본질을 구현한 앱이다.
-
-
-시간이 지날수록 몰입이는 화가 나게 된다.
-
-![app-logo](https://github.com/txxnrd/My_Application/assets/106647507/70132734-53ed-4d17-a45a-85dc4a12645e)
-
-
-주차별로 화난 몰입이를 볼 수 있어 몰입을 유도할 수 있다.
-
-1주차 몰입이는 몰입을 오래해서 아주 단단히 화났다.
-<img width="266" alt="image" src="https://github.com/txxnrd/My_Application/assets/106647507/37a892d3-e1db-4e7a-94df-3214dd7920d0">
-
-3주차 몰입이는 몰입을 전혀 안해 아주 행복하다.
-# My_Application
-
-
-## 😡몰입이를 화나게 하라😡
-
-Be Mad. MadCamp의 본질을 구현한 앱이다.
-
-
-시간이 지날수록 몰입이는 화가 나게 된다.
-
-![app-logo](https://github.com/txxnrd/My_Application/assets/106647507/70132734-53ed-4d17-a45a-85dc4a12645e)
-
-
-주차별로 화난 몰입이를 볼 수 있어 몰입을 유도할 수 있다.
-
-1주차 몰입이는 몰입을 오래해서 아주 단단히 화났다.
-<img width="266" alt="image" src="https://github.com/txxnrd/My_Application/assets/106647507/37a892d3-e1db-4e7a-94df-3214dd7920d0">
 
 
 
