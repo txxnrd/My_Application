@@ -13,8 +13,10 @@ Be Mad. MadCamp의 본질을 구현한 앱이다.
 
 주차별로 화난 몰입이를 볼 수 있어 몰입을 유도할 수 있다.
 
-
+1주차 몰입이는 몰입을 오래해서 아주 단단히 화났다.
 <img width="266" alt="image" src="https://github.com/txxnrd/My_Application/assets/106647507/37a892d3-e1db-4e7a-94df-3214dd7920d0">
+
+
 
 ***
 ## 전화번호부
